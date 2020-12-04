@@ -4,7 +4,7 @@ import { Tabs, Tab } from "react-bootstrap";
 
 export default () => {
   return (
-    <>
+   
       <Footer>
         <TecInfo>
           Em caso de problemas entrat em contato com: (00)0000-0000 ou
@@ -12,11 +12,11 @@ export default () => {
         </TecInfo>
         <CopyFooter>Todos os direitos reservados.</CopyFooter>
       </Footer>
-    </>
+  
   );
 };
 
-const Footer = styled.div`
+const Footer = styled.footer`
   width: 100%;
   padding: 2px;
 `;

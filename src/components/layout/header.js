@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Navbar, Nav, Dropdown } from "react-bootstrap";
+import { Navbar, Nav, Dropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default () => {
@@ -8,11 +8,6 @@ export default () => {
     {
       title: "Home",
       link: "",
-      icon: "",
-    },
-    {
-      title: "Lista",
-      link: "list",
       icon: "",
     },
     {
@@ -32,41 +27,60 @@ export default () => {
     },
   ];
   return (
-    <>
+    
       <Header>
-        <Navbar bg="light">
-          <Navbar.Brand href="#home">Concessionária sem nome</Navbar.Brand>
-          <Navbar.Collapse className="justify-content-end">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="success"
-                className="justify-content-end"
-                id="dropdown-basic"
-              >
-                Menu
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {menu.map((item, i) => (
-                  <Link to={item.link} key={i}>
-                    <Nav.Link as="div">{item.title}</Nav.Link>
-                  </Link>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-            {/* <Nav>
-              {menu.map((item, i) => (
-                <Link to={item.link} key={i}>
-                  <Nav.Link as="div">{item.title}</Nav.Link>
-                </Link>
-              ))}
-            </Nav> */}
-          </Navbar.Collapse>
+        <Navbar bg="dark">
+          <Container>
+            <Navbar.Brand href="#home">Logomarca</Navbar.Brand>
+              <Navbar.Brand href="#home">Aurum Motors</Navbar.Brand>
+              <Navbar.Brand href="#home">Art & Luxury</Navbar.Brand>
+              <MenuMobile className="justify-content-end">
+      
+              <MenuDesk>
+                  {menu.map((item, i) => (
+                    <Link to={item.link} key={i}>
+                      <Nav.Link as="div">{item.title}</Nav.Link>
+                    </Link>
+                  ))}
+                </MenuDesk> 
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="success"
+                    className="justify-content-end"
+                    id="dropdown-basic"
+                    >
+                    Menu
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    {menu.map((item, i) => (
+                      <Link to={item.link} key={i}>
+                        <Nav.Link as="div">{item.title}</Nav.Link>
+                      </Link>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </MenuMobile>
+          </Container>
         </Navbar>
       </Header>
-    </>
+   
   );
 };
 
-const Header = styled.div`
+const Header = styled.header`
   width: 100%;
+`;
+const MenuMobile=styled(Navbar.Collapse)`
+.dropdown{
+@media (min-width:500px){
+  display:none;
+}}
+`;
+const MenuDesk=styled(Nav)`
+&.navbar-nav .nav-link{
+  color:goldenrod;
+}
+@media (max-width:500px){
+  display:none;
+}
 `;

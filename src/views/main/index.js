@@ -1,7 +1,22 @@
-import List from "../../components/list";
-import Branches from "../../components/branches";
-import Login from "../../components/login";
-import Layout from "../../components/layout";
-import CarList from "../../components/carlist";
+import React from 'react'
+import Banner from './banner'
+import Brands from './brandlist'
+import Services from './services'
 
-export { List, Login, Layout, Branches, CarList };
+
+
+
+export default () => {
+  return (
+    <>
+    
+      <Banner />
+      <Brands />
+      <Services />
+    
+    </>
+  )
+}
+
+
+
