@@ -1,42 +1,60 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { Login, List, Branches, Layout, CarList } from "./main/components";
 import Home from "./main"
+import AdminPage from "./admin";
+import {isAuthenticated} from '../config/auth'
+
+
+const Pages = [
+  {
+    name: 'Login',
+    path: 'login',
+    component:Login
+  },
+  {
+    name: 'List',
+    path: 'list',
+    component:List
+  },
+  {
+    name: 'Branches',
+    path: 'branches',
+    component:Branches
+  },
+  {
+    name: 'CarList',
+    path: 'carList',
+    component:CarList
+  },
+  {
+    name: 'Home',
+    path: '',
+    component:Home
+  }
+]
+
+const AdminRoute = ({...rest}) => {
+  if(!isAuthenticated()) {
+    return <Redirect to='login'/> 
+  }
+  return <Route {...rest} />
+}
 
 export default (props) => {
   return (
     <>
       <Layout>
-        <Route
+        <AdminRoute
           exact
           baseName={props.match.path}
-          path={props.match.path + "login"}
-          component={Login}
+          path={props.match.path + "admin"}
+          component={AdminPage}
         />
-        <Route
-          exact
-          baseName={props.match.path}
-          path={props.match.path + "list"}
-          component={List}
-        />
-        <Route
-          exact
-          baseName={props.match.path}
-          path={props.match.path + "branches"}
-          component={Branches}
-        />
-        <Route
-          exact
-          baseName={props.match.path}
-          path={props.match.path + "carlist"}
-          component={CarList}
-        />
-        <Route
-          exact
-          baseName={props.match.path}
-          path={props.match.path}
-          component={Home}
-        />
+      {Pages.map((item, i) =>(
+        <Route key={i} exact baseName={props.match.path} path={props.match.path + item.path} component={item.component}/>
+        ))}
+        
       </Layout>
     </>
   );

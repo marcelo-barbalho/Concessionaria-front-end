@@ -1,23 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {Table} from 'react-bootstrap'
+import { useDispatch } from "react-redux";
+import {getCarList} from '../../store/carlist/carlist.action'
 
 export default () => {
+  
+  
+  const dispatch = useDispatch()
 
-  // const [carList, setCarList]  = useState([])
-
-//   useEffect(()=> {
-//     let get = async () => { 
-//         const p = await getProducts()
-//           setProducts(p.data)
-//       }
-//     if (!refresh) {
-//         get()
-//     }
-
-//     return () => get =() =>{}
-
-// }, [refresh])
+  useEffect(() => {
+    dispatch(getCarList())
+  }, [dispatch])
+   
 
 
   return (
