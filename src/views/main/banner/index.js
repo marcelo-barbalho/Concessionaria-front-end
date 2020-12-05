@@ -1,69 +1,68 @@
-import React from 'react'
+
+import React, { useState } from "react";
 import styled from "styled-components"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import image1 from '../../../assets/images/lamborghini-veneno-1.jpg'
 import image2 from '../../../assets/images/2021-jaguar-f-pace.jpg'
 import image3 from '../../../assets/images/lamborguin.webp'
 import image4 from '../../../assets/images/rs-experience-126.jpg'
-import { Container,Card } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 
 
 export default () => {
+  const [index, setIndex] = useState(0);
+const scroll=(direction)=>{
+  var element=document.getElementById("carouselThumbnails");
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 6
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items:3  
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+  if(direction==="left"){
+    element.scrollLeft+=200;
+  }
+  else{
+    element.scrollLeft-=200;
+  }
+}
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);}
   const cars = [
     { 
       'name':'Lamborghini Veneno',
       'photo':`${image1}`,
+      'thumb':`${image1}`,
       'description':'blablabla',
       'complete-description':'akhsgigqsiygdiqwdq'
     },
     { 
     'name':'Jaguar F-pace',
     'photo':`${image2}`,
+    'thumb':`${image2}`,
     'description':'blablabla',
     'complete-description':'akhsgigqsiygdiqwdq'
     },
     { 
     'name':'Lamborghini Huracan',
     'photo':`${image3}`,
+    'thumb':`${image3}`,
     'description':'blablabla',
     'complete-description':'akhsgigqsiygdiqwdq'
     },
     { 
     'name':'Audi R8',
     'photo':`${image4}`,
+    'thumb':`${image4}`,
     'description':'blablabla',
     'complete-description':'akhsgigqsiygdiqwdq'
+    
     },
     { 
     'name':'Jaguar F-pace',
     'photo':`${image2}`,
+    'thumb':`${image2}`,
     'description':'blablabla',
     'complete-description':'akhsgigqsiygdiqwdq'
     },
     { 
     'name':'Lamborghini Huracan',
     'photo':`${image3}`,
+    'thumb':`${image3}`,
     'description':'blablabla',
     'complete-description':'akhsgigqsiygdiqwdq'
     }
@@ -71,92 +70,88 @@ export default () => {
   ]
 
   return (
-    <>
+ <BannerContainer>
+       <Carousel indicators={false} controls={false} activeIndex={index} onSelect={handleSelect}>
+         {cars.map((car,index)=>
+      <CarouselItem key={index} backgroundimage={car.photo}>
+     
+        <CarouselText>
+          <h3>{car.name}</h3>
+          <p>{car.description}</p>
+        </CarouselText>
+      </CarouselItem>)}
     
-    <BannerContainer>
-      <BannerCarousel responsive={responsive} autoPlay={true} autoPlaySpeed='3500' swipeable={true} arrows={false} infinite={true}>
-      {cars.map((item, i)=> (
-        <CarrosselItem key={i} >
-          <CarImg src={item.photo}/>
-          <CarrouselText>
-          <h4>{item.name}</h4>
-          <p>{item.description}</p></CarrouselText>
-        </CarrosselItem>
-      ))}
-      </BannerCarousel>
-    </BannerContainer>
-    <HighlightCard>
-    <CardWraper>
-      <Card.Body >
-        <Card.Title>Bugatti Chiron</Card.Title>
-        {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
-        <Card.Text>
-        O Bugatti Chiron é um automóvel superesportivo de motor central e dois lugares desenhado e desenvolvido pela Bugatti como sucessor do Bugatti Veyron. 
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </CardWraper>
-    </HighlightCard>
-    </>
+    </Carousel>
+    <ThumbnailWrapper>
+    <ButtonArrow onClick={()=>scroll("right")}>{"<"}</ButtonArrow>
+   
+    <CarouselThumbnails id="carouselThumbnails">
+
+      {cars.map((car,index)=><CarouselThumbnail key={index} backgroundimage={car.thumb} onClick={()=>setIndex(index)}>
+      <span>{car.name}</span>
+
+
+      </CarouselThumbnail>
+      )}
+   
+    </CarouselThumbnails>
+    <ButtonArrow onClick={()=>scroll("left")}>{">"}</ButtonArrow>
+    </ThumbnailWrapper>
+</BannerContainer>
+ 
      )}
      
 // Styled Components
-const BannerCarousel = styled(Carousel)`
-h3{
-  padding-top:15px;
-
-}
-`
-const HighlightCard = styled.div`
-min-height:550px;
-  
-`
-const CardWraper = styled(Card)`
-background:rgba(190,190,190, 0.5);
-border:none;
-margin-top:35px;
-margin-left:105px;
-width:20rem;
-height:9rem;
-font-size:small;
-`
-
-
-const BannerContainer = styled(Container)`
-background:rgba(52,58,64, 0.7);
-max-width:90%;
-padding:1em 0;
-`
-
-
-const CarrosselItem = styled.div `
-
+const ThumbnailWrapper=styled.div`
 display:flex;
+width:80%;
+margin:auto;
+margin-top:-50px;
+position:relative;
+align-items:center;
+`;
+const ButtonArrow=styled.button`
+width:30px;
+color:#fff;
+background-color:goldenrod;
+height:30px;
+border:none;
+z-index:9;
+  position: relative;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+`;
+const CarouselThumbnails=styled.div`
+  display:flex;
+width:110%;
+  height:100px;
+  overflow:hidden;
+  scroll-behavior: smooth;
+ 
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+`;
+const CarouselThumbnail=styled.div`
+  min-width:20%;
+  
+  height:100px;
+  background-image:url(${props => props.backgroundimage});
+background-size:cover;
+`;
 
-height:8rem;
-
-margin:3px;
-justify-items:center;
-text-align:center;
-background:goldenrod;
-border-radius:5px;
-font-size:small
+const BannerContainer = styled.div`
+width:100%;
+background-color:#201E27;
+padding-bottom:2em;
 `
-
-const CarImg = styled.img`
- // max-height: 50%;
-  width: 50%;
-  background-color: #fff;
-  background-size: auto 100%;
-  background-position: center;
-  border-radius:5px;
-  /* opacity: 0.4; */
+const CarouselText=styled(Carousel.Caption)`
+width:30%;
+background:rgba(52,58,64, 0.7);
+bottom:40%;
+left:10%;
 `;
-const CarrouselText= styled.div`
-padding:1em;
-`;
-
-
-
-
+const CarouselItem = styled(Carousel.Item) `
+background-image:url(${props => props.backgroundimage});
+background-size:cover;
+height:400px;
+width:100%;
+padding:5vh;
+`
