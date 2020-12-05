@@ -1,5 +1,5 @@
-import {http} from '../config/config'
+import {http} from '../config/http'
 
 const auth = (data) => http.post('/auth', data)
 
-export default auth
+export {auth}

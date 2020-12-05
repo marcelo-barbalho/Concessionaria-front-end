@@ -1,37 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {Form, Button} from 'react-bootstrap'
+import { useDispatch } from "react-redux";
+import { login } from "../../store/auth/auth.action";
 
 export default () => {
+
+  const dispatch = useDispatch();
+
+  const [form, setForm]=useState({})
+
+  const handleChange = (attr) => {
+    setForm({
+      ...form,
+      [attr.target.name]:attr.target.value
+    })
+  }
+  const isSubmitValid = () => form.username && form.password
+
+  const submitLogin = async (e) => {
+    e.preventDefault()
+    if (isSubmitValid()) {
+      console.log(form)
+      dispatch(login(form))
+    }
+  }
+
+
   return (
     <>
       <CustomLogin> 
         <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+          <Form.Group controlId="formBasic">
+            <Form.Label>Usuário</Form.Label>
+            <Form.Control onChange={handleChange} name="username" value={form.username || ""} type="text" placeholder="Insira seu usuário" />
           </Form.Group>
-
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" onChange={handleChange} name="password" value={form.password || ""} placeholder="Insira sua Senha" />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button onClick={submitLogin} disabled={!isSubmitValid()} type="submit" variant="primary">
             Submit
           </Button>
         </Form>  
       </CustomLogin>
     </>
-  );
-};
+  )
+}
 
 const CustomLogin = styled.div`
-  width: 10%;
-  background: red;
-`;
+  width: 30%;
+  background: transparent;
+  margin-left:35%;
+  margin-top:50px;
+`
