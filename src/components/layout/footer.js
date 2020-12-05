@@ -19,6 +19,7 @@ export default () => {
 const Footer = styled.footer`
   width: 100%;
   padding: 2px;
+  background-color:#343A40;
 `;
 
 const TecInfo = styled.div`

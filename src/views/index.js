@@ -45,7 +45,7 @@ export default (props) => {
   return (
     <>
       <Layout>
-        <AdminRoute
+        <Route
           exact
           baseName={props.match.path}
           path={props.match.path + "admin"}

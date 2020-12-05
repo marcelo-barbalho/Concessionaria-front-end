@@ -7,7 +7,7 @@ import image5 from '../../assets/images/chiron-bgc.jpg'
 
 export default ({ children }) => {
   return (
-    <>
+   
     <Background>
       <ContainerLayout>
         <Header />
@@ -15,14 +15,14 @@ export default ({ children }) => {
       {children}
       
       </ContainerLayout>
+      <Footer />
     </Background>
-    <Footer />
-    </>
+
   );
 };
 
 const ContainerLayout = styled.div`
-
+min-height:80vh;
   /* max-width:2200px; */
 
 `;
@@ -30,4 +30,5 @@ const Background = styled.div`
 background:url(${image5}) no-repeat center;
 background-size:cover;
 background-attachment:fixed;
+min-height:100vh;
 `
