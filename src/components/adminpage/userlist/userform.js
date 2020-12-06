@@ -1,10 +1,22 @@
 import React, {useState}from 'react'
-import {Button, Modal, Form} from 'react-bootstrap'
+import {Button, Form} from 'react-bootstrap'
+import { useDispatch } from 'react-redux';
 import styled from "styled-components";
+import {userSave} from '../../../store/user/user.action'
 
 const User = ({setModalShow}) => {
 
-const [form, setForm] = useState({});
+const [form, setForm] = useState({
+birthdate: "2000-11-14",
+company: "5fcc43d69047460017159fc8",
+email: "teste@teste.com",
+fullname: "teste teste",
+is_active: true,
+is_admin: true,
+password: "123456",
+username: "teste"
+});
+const dispatch  = useDispatch()
 
 const handleChange = (attr) => {
   const {value, name, checked} = attr.target
@@ -15,6 +27,11 @@ const handleChange = (attr) => {
    ...form,
    [name]:isChecked ? checked : value
  }) 
+}
+const submitForm = async (e) => {
+    console.log(form)
+    dispatch(userSave(form))
+  
 }
 
   return (
@@ -42,7 +59,7 @@ const handleChange = (attr) => {
     </Form.Group>
     <Form.Group controlId="exampleForm.ControlInput5">
       <Form.Label>Filial</Form.Label>
-      <Form.Control onChange={handleChange} type="text" name="branch" value={form.branch || ''} placeholder="Ex:Barra da Tijuca" />
+      <Form.Control onChange={handleChange} type="text" name="company" value={form.company || ''} placeholder="Ex:Barra da Tijuca" />
     </Form.Group>
     <Form.Group controlId="exampleForm.ControlInput6">
       <Form.Label>Data de Nascimento</Form.Label>
@@ -54,7 +71,7 @@ const handleChange = (attr) => {
     <Form.Group controlId="formBasicCheckbox2">
       <Form.Check onClick={handleChange} type="checkbox" name="is_admin" value={form.is_admin || ''} label="Administrador" />
     </Form.Group>
-    <Button onClick={()=> console.log(form)}>Enviar</Button>
+    <Button onClick={submitForm}>Enviar</Button>
   </Form>
   </ModalTeste></Darker>
   )

@@ -36,7 +36,7 @@ const Pages = [
 
 const AdminRoute = ({...rest}) => {
   if(!isAuthenticated()) {
-    return <Redirect to='login'/> 
+    return <Redirect to='/login'/> 
   }
   return <Route {...rest} />
 }
@@ -45,7 +45,7 @@ export default (props) => {
   return (
     <>
       <Layout>
-        <Route
+        <AdminRoute
           exact
           baseName={props.match.path}
           path={props.match.path + "admin"}

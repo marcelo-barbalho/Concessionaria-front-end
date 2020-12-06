@@ -12,6 +12,7 @@ export const login = (props) => {
     return async (dispatch) => { // react thunk
         try {
             const { data } = await serviceAuth(props);
+            console.log(data)
             saveToken(data)
             http.defaults.headers["x-auth-token"] = data.token;
             dispatch({ type: LOGIN, data })

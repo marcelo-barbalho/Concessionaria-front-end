@@ -18,7 +18,7 @@ const removeToken = () => {
 
 const isAuthenticated =  () => {
     
-    return getToken()
+    return getToken() !== false
 }
 
 export {
