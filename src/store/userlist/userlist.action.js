@@ -1,10 +1,10 @@
 
-import {getUserList} from '../../services/admin'
+import {getUsers} from '../../services/admin'
 
-export const getUsers = () => {
+export const getUsersList = () => {
     return async (dispatch) => {
         
-        const response = await getUserList()
+        const response = await getUsers()
 
         dispatch({
             type:"GET_USER_LIST",

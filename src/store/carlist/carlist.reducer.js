@@ -1,12 +1,11 @@
 const INITIAL_STATE = {
-    carlist:[]
+        all:[]
 }
 
 const reducer = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         case "GET_CAR_LIST":
-            console.log('chegou no reducer')
-            console.log(action)
+            state.all = action.data
             return state
     
         default:

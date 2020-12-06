@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    userlist:[]
+    all:[]
 }
 
 const reducer = (state=INITIAL_STATE, action) => {
@@ -7,6 +7,7 @@ const reducer = (state=INITIAL_STATE, action) => {
         case "GET_USER_LIST":
             console.log('chegou no reducer user')
             console.log(action)
+            state.all = action.data
             return state
     
         default:

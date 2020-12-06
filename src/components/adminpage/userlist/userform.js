@@ -4,18 +4,19 @@ import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import {userSave} from '../../../store/user/user.action'
 
-const User = ({setModalShow}) => {
+const User = ({user, setModalShow}) => {
 
-const [form, setForm] = useState({
-birthdate: "2000-11-14",
-company: "5fcc43d69047460017159fc8",
-email: "teste@teste.com",
-fullname: "teste teste",
-is_active: true,
-is_admin: true,
-password: "123456",
-username: "teste"
-});
+const [form, setForm] = useState(
+user  
+// birthdate: "2000-11-14",
+// company: "5fcc43d69047460017159fc8",
+// email: "teste@teste.com",
+// fullname: "teste teste",
+// is_active: true,
+// is_admin: true,
+// password: "123456",
+// username: "teste"
+);
 const dispatch  = useDispatch()
 
 const handleChange = (attr) => {
@@ -66,12 +67,12 @@ const submitForm = async (e) => {
       <Form.Control onChange={handleChange} type="date" name="birthdate" value={form.birthdate || ''} placeholder="ex: 15/11/1998" />
     </Form.Group>
     <Form.Group controlId="formBasicCheckbox1">
-      <Form.Check onClick={handleChange} type="checkbox" name="is_active" value={form.is_active || ''} label="Funcionário Ativo" />
+      <Form.Check onClick={handleChange} type="checkbox" checked={form.is_active? true : false} name="is_active" value={form.is_active || ''} label="Funcionário Ativo" />
     </Form.Group>
     <Form.Group controlId="formBasicCheckbox2">
-      <Form.Check onClick={handleChange} type="checkbox" name="is_admin" value={form.is_admin || ''} label="Administrador" />
+      <Form.Check onChange={handleChange} onClick={handleChange} type="checkbox" checked={form.is_admin? true : false} name="is_admin" value={form.is_admin || ''} label="Administrador" />
     </Form.Group>
-    <Button onClick={submitForm}>Enviar</Button>
+    <Button onChange={handleChange} onClick={submitForm}>Enviar</Button>
   </Form>
   </ModalTeste></Darker>
   )

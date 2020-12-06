@@ -8,7 +8,10 @@ export default () => {
 
   const dispatch = useDispatch();
 
-  const [form, setForm]=useState({})
+  const [form, setForm]=useState({
+    username:"gabriel",
+    password:"popopo12"
+  })
 
   const handleChange = (attr) => {
     setForm({

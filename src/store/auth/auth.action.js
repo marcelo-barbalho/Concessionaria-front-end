@@ -9,7 +9,7 @@ export const LOGIN = "LOGIN"
 
 
 export const login = (props) => {
-    return async (dispatch) => { // react thunk
+    return async (dispatch) => { 
         try {
             const { data } = await serviceAuth(props);
             console.log(data)

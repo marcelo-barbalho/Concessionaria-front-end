@@ -2,9 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { Navbar, Nav, Dropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {isAuthenticated, removeToken } from "../../config/auth";
+
 
 export default () => {
+  const logout = () => {
+    removeToken()
+  }
   const menu = [
+    {
+      title: `${isAuthenticated()?"Admin":""}`,
+      link: `${isAuthenticated()?"/admin":""}`,
+      icon: "",
+    },
     {
       title: "Home",
       link: "",
@@ -21,11 +31,14 @@ export default () => {
       icon: "",
     },
     {
-      title: "Sair",
-      link: "login",
+      title: `${isAuthenticated()?"Sair":"Login"}`,
+      link: `${isAuthenticated()?"/":"login"}`,
       icon: "",
+      action:()=>logout()
     },
+    
   ];
+  
   return (
     
       <Header>
@@ -39,7 +52,7 @@ export default () => {
               <MenuDesk>
                   {menu.map((item, i) => (
                     <Link to={item.link} key={i}>
-                      <Nav.Link as="div">{item.title}</Nav.Link>
+                      <Nav.Link onClick={item.action} as="div">{item.title}</Nav.Link>
                     </Link>
                   ))}
                 </MenuDesk> 

@@ -5,9 +5,9 @@ const getToken = () => localStorage.getItem(TOKEN_KEY)
 const getUser = () => localStorage.getItem(USER)
 
 
-const saveToken = (token, user) => {
+const saveToken = (token, username) => {
     localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
-    localStorage.setItem(USER, JSON.stringify(user))
+    localStorage.setItem(USER, JSON.stringify(username))
 
 } 
 
@@ -18,7 +18,7 @@ const removeToken = () => {
 
 const isAuthenticated =  () => {
     
-    return getToken() !== false
+    return getToken() !== null
 }
 
 export {

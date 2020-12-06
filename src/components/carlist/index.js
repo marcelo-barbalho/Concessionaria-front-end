@@ -1,56 +1,71 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import styled from "styled-components";
 import {Table} from 'react-bootstrap'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {getCarList} from '../../store/carlist/carlist.action'
 
-export default () => {
+function CarList () {
+
+
+  const dispatch = useDispatch()  
+  const carsState=useSelector((state) => state.carlist.all);
   
-  
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCarList())
+     dispatch(getCarList())
   }, [dispatch])
    
-
+  
+  const MountList = () =>
+    carsState.map((cars,i)=>(
+        <tr key={i}>
+          <td>{cars.carstatus ? "Novo":"Usado"}</td>
+          <td>{cars.brand}</td>
+          <td>{cars.carmodel}</td>
+          <td>{cars.year}</td>
+          <td>{cars.fueltype}</td>
+          <td>{cars.color}</td>
+          <td>{cars.location}</td>
+        </tr>
+  ))
 
   return (
     <>
+      <button onClick={()=>console.log(carsState)} >teste</button>
       <CustomCarList>
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Status</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Ano</th>
+              <th>Combustível</th>
+              <th>Cor</th>
+              <th>Localidade</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+          <MountList/>
+          {/* {carsState.map((cars)=>(
+        <tr>
+          <td>{cars.carstatus ? "Novo":"Usado"}</td>
+          <td>{cars.brand}</td>
+          <td>{cars.carmodel}</td>
+          <td>{cars.year}</td>
+          <td>{cars.fueltype}</td>
+          <td>{cars.color}</td>
+          <td>{cars.location}</td>
+        </tr>
+  ))} */}
           </tbody>
         </Table>
       </CustomCarList>
     </>
   );
 };
+
+export default CarList
 
 const CustomCarList = styled.div`
   /* background: orange;

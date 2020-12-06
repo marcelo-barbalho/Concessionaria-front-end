@@ -3,14 +3,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import multi from "redux-multi";
 import carListReducer from './carlist/carlist.reducer' 
+import userListReducer from './userlist/userlist.reducer'
 
-// importação dos reducers
-// import SignReducer from "./Sign/sign.reducer";
-// import PostReducer from "./Post/post.reducer";
 
 // modularizações dos reduces
 const reducers = combineReducers({
   carlist:carListReducer,
+  userlist:userListReducer,
   // auth: SignReducer,
   // post: PostReducer,
 });
@@ -26,4 +25,4 @@ const store = createStore(reducers, compose);
 
 export default store;
 
-// ---------------------------
+

@@ -7,13 +7,13 @@ const postCars = (data, config = {}) => http.post('/cars', data, config)
 const patchCars = (id, data, config = {}) => http.patch(`/cars/${id}`, data, config)
 
 // User verbs
-const getUserList = (data) => http.get('/user')
+const getUsers = (data) => http.get('/user')
 const deleteUser = (id) => http.delete(`/user/${id}`)
 const postUser = (data) => http.post('/user', data)
 const patchUser = (id, data) => http.patch(`/user/${id}`, data)
 
 export {
-    getUserList,
+    getUsers,
     deleteUser,
     postUser,
     patchUser,
