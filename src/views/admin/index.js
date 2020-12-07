@@ -24,9 +24,11 @@ const AdminPage = () => {
   return (
     <>
       <Dash>
+      <ButtonsWrapper>
       <ListButton onClick={() => {setShowList('carlist')}}>Lista de Carros</ListButton>
       <ListButton onClick={() => {setShowList('userlist')}}>Lista de usuários</ListButton>
       <ListButton onClick={() => {setShowList('branchlist')}}>Lista de concessionárias</ListButton>
+      </ButtonsWrapper>
         {component()}
       </Dash>
     </>
@@ -34,6 +36,13 @@ const AdminPage = () => {
 }
 
 export default AdminPage
+const ButtonsWrapper=styled.div`
+  width:90%;
+  margin:2em auto;
+  margin-bottom:0;
+  display:flex;
+  justify-content:space-between;
+`;
 
 const Dash = styled.div`
 
@@ -43,14 +52,16 @@ const Dash = styled.div`
 `
 const ListButton = styled.button`
 
-  border:5px;
+  border:none;
   padding:3px;
-  margin-right:50px;
-  border-radius:3px;
-  background-color: #ccc;
-  :hover{
-    background-color:#fff;
-  }
+  background-color:  #43494E;
+  outline:none;
+  padding:0.5em;
+  width:30%;
+  :hover,:focus{
+    background-color:#343A40;
+    outline:none;
+    color:goldenrod;  }
   
   /* background-color:red; */
 

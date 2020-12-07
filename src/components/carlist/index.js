@@ -1,8 +1,8 @@
 import React, { useEffect} from "react";
-import styled from "styled-components";
-import {Table} from 'react-bootstrap'
+
 import { useDispatch, useSelector } from "react-redux";
 import {getCarList} from '../../store/carlist/carlist.action'
+import CustomList from "../list"
 
 function CarList () {
 
@@ -15,62 +15,24 @@ function CarList () {
      dispatch(getCarList())
   }, [dispatch])
    
-  
-  const MountList = () =>
-    carsState.map((cars,i)=>(
-        <tr key={i}>
-          <td>{cars.carstatus ? "Novo":"Usado"}</td>
-          <td>{cars.brand}</td>
-          <td>{cars.carmodel}</td>
-          <td>{cars.year}</td>
-          <td>{cars.fueltype}</td>
-          <td>{cars.color}</td>
-          <td>{cars.location}</td>
-        </tr>
-  ))
-
+ 
   return (
     <>
-      <button onClick={()=>console.log(carsState)} >teste</button>
-      <CustomCarList>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Status</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Ano</th>
-              <th>Combustível</th>
-              <th>Cor</th>
-              <th>Localidade</th>
-            </tr>
-          </thead>
-          <tbody>
-          <MountList/>
-          {/* {carsState.map((cars)=>(
-        <tr>
-          <td>{cars.carstatus ? "Novo":"Usado"}</td>
-          <td>{cars.brand}</td>
-          <td>{cars.carmodel}</td>
-          <td>{cars.year}</td>
-          <td>{cars.fueltype}</td>
-          <td>{cars.color}</td>
-          <td>{cars.location}</td>
-        </tr>
-  ))} */}
-          </tbody>
-        </Table>
-      </CustomCarList>
-    </>
+     
+      <CustomList columnsNames={["Novo","Marca","Modelo","Ano","Combustível","Cor","Localidade"]} 
+      columns={["carstatus","brand","carmodel","year","fueltype","color","location"]}
+      list={carsState}
+      editAction={()=>{}}
+      deleteAction={()=>{}}
+      addAction={()=>{}}
+      />
+      
+</>
   );
 };
 
 export default CarList
 
-const CustomCarList = styled.div`
-  /* background: orange;
-  width: 100%; */
-`;
 
 
 // const [modalShow, setModalShow] = useState(false);

@@ -42,7 +42,7 @@ export default () => {
   return (
     
       <Header>
-        <Navbar bg="dark">
+        <Navbar>
           <Container>
             <Navbar.Brand href="#home">Logomarca</Navbar.Brand>
               <Navbar.Brand href="#home">Aurum Motors</Navbar.Brand>
@@ -82,6 +82,7 @@ export default () => {
 
 const Header = styled.header`
   width: 100%;
+  background-color:#201E27;
 `;
 const MenuMobile=styled(Navbar.Collapse)`
 .dropdown{

@@ -8,8 +8,7 @@ export const EDIT_USER = "EDIT_USER"
 export const userSave = (props) => {
     console.log(props)
     return async (dispatch) => {
-        if (props._id !== null) {
-            console.log('xxx')
+        if (props._id) {
             await patchUser(props._id, props)
             dispatch({ type: EDIT_USER })
         } 
@@ -20,11 +19,6 @@ export const userSave = (props) => {
     }
 }
 export const userRemove = async (props) => {
-    // console.log(props)
-    
-
             await deleteUser(props._id)
-            
-        
-    
+
 }
