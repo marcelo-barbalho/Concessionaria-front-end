@@ -1,12 +1,13 @@
 const INITIAL_STATE = {
-    userlist:[]
+    all:[]
 }
 
 const reducer = (state=INITIAL_STATE, action) => {
     switch (action.type) {
-        case "GET_USER_LIST":
-            console.log('chegou no reducer user')
+        case "GET_BRANCH_LIST":
+            console.log('chegou no reducer branch')
             console.log(action)
+            state.all = action.data
             return state
     
         default:

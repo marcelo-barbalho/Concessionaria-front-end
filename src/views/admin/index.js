@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import User from '../../components/adminpage/userlist'
 import styled from 'styled-components'
 import CarList from '../../components/carlist'
+import BranchList from '../../components/branches/'
 
 const AdminPage = () => {
 
@@ -14,7 +15,7 @@ const AdminPage = () => {
       case 'carlist':
         return (<CarList/>)
       case 'branchlist':
-        return (<h1>branchList</h1>)        
+        return (<BranchList/>)        
     
       default:
         break;

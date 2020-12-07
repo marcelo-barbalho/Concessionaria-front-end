@@ -1,71 +1,124 @@
 import React, {useState}from 'react'
-import {Button, Modal, Form} from 'react-bootstrap'
+import {Button, Form} from 'react-bootstrap'
+import { useDispatch } from 'react-redux';
+import {saveCar} from '../../store/carlist/carlist.action'
+import styled from 'styled-components'
 
-const User = () => {
+const CarForm = ({user, setModalShow}) => {
 
-const [modalShow, setModalShow] = useState(false);
+  const [form, setForm] = useState(user);
+  const dispatch  = useDispatch()
+  
+  const handleChange = (attr) => {
+    const {value, name} = attr.target
+    
+    if (name === 'photo') {
+      let file = attr.target.files[0]
+      setForm({
+        ...form,
+        'photo' : file
+      })  
+    }else{
 
-
-function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Novo Usuário
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Nome Completo</Form.Label>
-              <Form.Control type="text" placeholder="Ex: Marta da Silva"/>
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput2">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="name@example.com" />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput3">
-              <Form.Label>Usuário</Form.Label>
-              <Form.Control type="email" placeholder="Escolha um apelido" />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput4">
-              <Form.Label>Senha</Form.Label>
-              <Form.Control type="password" placeholder="Mínimo 6 caracteres" />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput5">
-              <Form.Label>Filial</Form.Label>
-              <Form.Control type="text" placeholder="Ex:Barra da Tijuca" />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlInput6">
-              <Form.Label>Data de Nascimento</Form.Label>
-              <Form.Control type="date" placeholder="ex: 15/11/1998" />
-            </Form.Group>
-          </Form>
-          <Button onClick={()=> console.log('funcionando')}>Enviar</Button>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Fechar</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  return (
-    <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Novo Usuário
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </>
-  )
+    setForm({
+      ...form,
+      [name]:value
+    })}
+    return
 }
-
-export default User
+  
+  const submitForm = async () => {
+      let data = new FormData()
+    
+    Object.keys(form).forEach(key => data.append(key,form[key]))
+    
+    const config = {
+      headers:{
+          'Content-type':'multipart/form-data'
+      }
+    }
+      console.log(form, data)
+      dispatch(saveCar(data, config))
+    
+  }
+  
+    return (
+      <Darker>
+      <ModalTeste>
+      <ButtonClose onClick={()=>setModalShow(false)} >x</ButtonClose>
+        <h3>Cadastro de Carros</h3>
+      
+      <Form>
+      {/* <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Novo</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name='carstatus' value={form.carstatus || ''}/>
+      </Form.Group> */}
+      <Form.Group controlId="exampleForm.ControlInput2">
+        <Form.Label>Marca</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="brand" value={form.brand || ''} placeholder="Ferrari" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput3">
+        <Form.Label>Modelo</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="carmodel" value={form.carmodel || ''} placeholder="500GT" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput4">
+        <Form.Label>Ano</Form.Label>
+        <Form.Control onChange={handleChange} type="number" name="year" value={form.year || ''} placeholder="Mínimo 6 caracteres" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput5">
+        <Form.Label>Combustível</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="fuel" value={form.fuel || ''} placeholder="Ex:Barra da Tijuca" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput6">
+        <Form.Label>Placa</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="carplate" value={form.carplate || ''} placeholder="Ex:qwe3214" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput7">
+        <Form.Label>Chassi</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="chassis" value={form.chassis || ''} placeholder="Ex:321654987" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput8">
+        <Form.Label>Cor</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="color" value={form.color || ''} placeholder="ex: Gasolina" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput9">
+        <Form.Label>Localidade</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name="location" value={form.location || ''} placeholder="Ex:Barra da Tijuca" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput10">        
+        <Form.File id="exampleFormControlFile1" onChange={handleChange} type="file" name="photo"  label="Insira a imagem" />
+      </Form.Group>      
+      <Button onClick={()=>submitForm(form)}>Enviar</Button>
+    </Form>
+    </ModalTeste></Darker>
+    )
+} 
+export default CarForm
+  const Darker=styled.div`
+    background-color:rgba(0,0,0,0.5);
+    width:100%;
+    min-height:100vh;
+    position:absolute;
+    top:0;
+  `;
+  const ModalTeste=styled.div`
+    background-color:#fff;
+    padding:1em 2em;
+    width:50vw;
+  margin:2em auto;
+  
+    form{
+      width:100%;
+      padding:1em 0;
+    }
+  `;
+  const ButtonClose=styled.button`
+  font-size:20px;
+  background-color:transparent;
+  box-shadow:none;
+  border:none;
+  width:20px;
+  position:absolute;
+  right:25%;
+  top:1.5em;
+  `;

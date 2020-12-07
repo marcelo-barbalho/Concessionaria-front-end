@@ -4,12 +4,13 @@ import thunk from "redux-thunk";
 import multi from "redux-multi";
 import carListReducer from './carlist/carlist.reducer' 
 import userListReducer from './userlist/userlist.reducer'
-
+import branchListReducer from './branchlist/branchlist.reducer'
 
 // modularizações dos reduces
 const reducers = combineReducers({
   carlist:carListReducer,
   userlist:userListReducer,
+  branchlist:branchListReducer,
   // auth: SignReducer,
   // post: PostReducer,
 });
