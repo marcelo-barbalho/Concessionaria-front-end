@@ -29,9 +29,10 @@ const handleChange = (attr) => {
    [name]:isChecked ? checked : value
  }) 
 }
-const submitForm = async (e) => {
+const submitForm = async () => {
     console.log(form)
     dispatch(userSave(form))
+    setModalShow(false)
   
 }
 

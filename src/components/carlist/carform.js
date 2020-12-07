@@ -39,7 +39,7 @@ const CarForm = ({user, setModalShow}) => {
     }
       console.log(form, data)
       dispatch(saveCar(data, config))
-    
+      setModalShow(false)
   }
   
     return (

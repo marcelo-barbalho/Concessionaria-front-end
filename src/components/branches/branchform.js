@@ -18,8 +18,8 @@ const handleChange = (attr) => {
   return
 }
 const submitForm = async () => {
-    console.log(form)
     dispatch(branchSave(form))
+    setModalShow(false)
   
 }
 

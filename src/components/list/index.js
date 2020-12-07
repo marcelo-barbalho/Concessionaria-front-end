@@ -19,7 +19,7 @@ export default (props) => {
           <tbody>
             {list.map((item,i)=>(
         <tr key={i}>
-       {columns.map((key)=><td>
+       {columns.map((key,i)=><td key={i}>
         {typeof item[key]==="boolean"?
           (item[key]?"Sim":"Não")
           :item[key]}</td>) }
