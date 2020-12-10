@@ -4,7 +4,8 @@ import {http} from '../config/http'
 const getCars = (data) => http.get('/cars')
 const deleteCars = (id) => http.delete(`/cars/${id}`)
 const postCars = (data, config = {}) => http.post('/cars', data, config)
-const patchCars = (id, data, config = {}) => http.patch(`/cars/${id}`, data, config)
+const patchCars = (id, data, config = {}) =>{ http.patch(`/cars/${id}`, data, config)
+console.log(id,data)}
 
 // User verbs
 const getUsers = (data) => http.get('/user')

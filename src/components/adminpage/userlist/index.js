@@ -16,7 +16,7 @@ export default () => {
 
   useEffect(() => {
     dispatch(getUsersList())
-  }, [dispatch])
+  }, [dispatch,modalShow])
    
 
   return (

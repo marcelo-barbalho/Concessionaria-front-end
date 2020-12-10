@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import {Form, Button} from 'react-bootstrap'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/auth/auth.action";
+import Loading from '../loading'
 
 export default () => {
 
@@ -12,6 +13,7 @@ export default () => {
     username:"gabriel",
     password:"popopo12"
   })
+  const loading = useSelector((state) => state.auth.loading)
 
   const handleChange = (attr) => {
     setForm({
@@ -24,7 +26,7 @@ export default () => {
   const submitLogin = async (e) => {
     e.preventDefault()
     if (isSubmitValid()) {
-      console.log(form)
+
       dispatch(login(form))
     }
   }
@@ -33,7 +35,7 @@ export default () => {
   return (
     <>
       <CustomLogin> 
-        <Form>
+        {loading? <Loading/> : (<Form>
           <Form.Group controlId="formBasic">
             <Form.Label>Usuário</Form.Label>
             <Form.Control onChange={handleChange} name="username" value={form.username || ""} type="text" placeholder="Insira seu usuário" />
@@ -45,7 +47,7 @@ export default () => {
           <Button onClick={submitLogin} disabled={!isSubmitValid()} type="submit" variant="primary">
             Submit
           </Button>
-        </Form>  
+        </Form> )} 
       </CustomLogin>
     </>
   )

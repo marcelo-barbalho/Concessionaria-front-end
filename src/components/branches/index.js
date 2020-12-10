@@ -13,7 +13,7 @@ export default () => {
 
   useEffect(() => {
      dispatch(getBranches())
-  }, [dispatch])
+  }, [dispatch, modalShow])
    
  
   return (
@@ -39,7 +39,7 @@ export default () => {
       list={branchState}
       editAction={(branch)=>{setModalShow(true);setEditBranch(branch)}}
       deleteAction={(branch)=>branchRemove(branch)}
-      addAction={()=>setModalShow(true)}
+      addAction={()=>{setEditBranch({});setModalShow(true)}}
       />
       
 </>

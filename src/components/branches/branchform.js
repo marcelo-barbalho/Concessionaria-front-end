@@ -19,9 +19,12 @@ const handleChange = (attr) => {
 }
 const submitForm = async () => {
     dispatch(branchSave(form))
+    setForm({})
     setModalShow(false)
   
 }
+
+
 
   return (
     <Darker>

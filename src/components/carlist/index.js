@@ -14,7 +14,7 @@ function CarList () {
 
   useEffect(() => {
      dispatch(getCarList())
-  }, [dispatch])
+  }, [dispatch, modalShow])
    
  
   return (

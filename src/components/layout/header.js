@@ -67,7 +67,7 @@ export default () => {
                   <Dropdown.Menu>
                     {menu.map((item, i) => (
                       <Link to={item.link} key={i}>
-                        <Nav.Link as="div">{item.title}</Nav.Link>
+                        <Nav.Link onClick={item.action} as="div">{item.title}</Nav.Link>
                       </Link>
                     ))}
                   </Dropdown.Menu>

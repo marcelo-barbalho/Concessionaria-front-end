@@ -15,15 +15,15 @@ export const getCarList = () => {
     }
 }
 export const saveCar = (props, config) => {
-    return async (dispatch) => {
-        if (props._id) {
-            await patchCars(props._id, props, config)
-            dispatch({ type: "EDIT_CAR" })
+    console.log(props.get("_id"))
+    return async () => {
+        if (props.get("_id")) {
+            await patchCars(props.get("_id"), props, config)
+           
         } 
         else {
             
             await postCars(props, config)
-            
         }
     }
 }

@@ -30,9 +30,10 @@ const handleChange = (attr) => {
  }) 
 }
 const submitForm = async () => {
-    console.log(form)
+   
     dispatch(userSave(form))
     setModalShow(false)
+    setForm({})
   
 }
 

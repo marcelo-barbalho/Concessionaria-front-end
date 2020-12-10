@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {Table} from 'react-bootstrap'
 import {FiEdit,FiTrash2} from 'react-icons/fi'
+import {isAuthenticated} from '../../config/auth'
 
 export default (props) => {
   const {columnsNames,columns,list,editAction,deleteAction,addAction}=props
@@ -28,7 +29,8 @@ export default (props) => {
   ))}
           </tbody>
           </Table>
-          <button onClick={addAction}>Adicionar</button>
+         
+          {isAuthenticated()? <button onClick={addAction}>Adicionar</button> : ""}
       </CustomList>
     </>
   );

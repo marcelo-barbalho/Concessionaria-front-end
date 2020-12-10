@@ -1,11 +1,12 @@
-import {LOGIN}  from "./auth.action"
+import {LOGIN, LOGIN_LOADING}  from "./auth.action"
 import {getToken, getUser} from '../../config/auth'
 
 
 
 const INITIAL_STATE = {
     token: getToken() || "",
-    profile: getUser() || {}
+    profile: getUser() || {},
+    loading:false
 }
 
 
@@ -17,7 +18,12 @@ const reducer = (state=INITIAL_STATE, action) => {
             const { token, user } = action.data
             state.token = token
             state.profile = user
+            state.loading = false
             return state
+        case LOGIN_LOADING :
+            state.loading = action.loading;
+            return state;
+              
         
         default:
             return state
