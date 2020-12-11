@@ -4,11 +4,11 @@ import Main from "./views/";
 import history from "./config/history";
 
 const Routers = () => {
+  
   return (
     <Router history={history}>
       <Switch>
         <Route path="/" component={Main} />
-        {/* <Route path="/" component={Portal} /> */}
       </Switch>
     </Router>
   );
