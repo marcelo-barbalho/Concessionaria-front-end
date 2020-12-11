@@ -37,7 +37,7 @@ const Pages = [
 
 const AdminRoute = ({...rest}) => {
   if(!isAuthenticated()) {
-    return <Redirect to='/login'/> 
+    return <Redirect to='/'/> 
   }
   return <Route {...rest} />
 }
