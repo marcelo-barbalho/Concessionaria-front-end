@@ -9,9 +9,7 @@ const CarForm = ({user, setModalShow}) => {
 
   const [form, setForm] = useState(user);
   const dispatch  = useDispatch()
-  const branch = useSelector(state => {
-    
-    return state.branchlist.all})
+  const branch = useSelector(state => state.branchlist.all)
 
   const handleChange = (attr) => {
     const {value, name} = attr.target;
@@ -58,10 +56,10 @@ else{
         <h3>Cadastro de Carros</h3>
       
       <Form>
-      {/* <Form.Group controlId="exampleForm.ControlInput1">
+      <Form.Group controlId="exampleForm.ControlInput1">
         <Form.Label>Novo</Form.Label>
         <Form.Control onChange={handleChange} type="text" name='carstatus' value={form.carstatus || ''}/>
-      </Form.Group> */}
+      </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput2">
         <Form.Label>Marca</Form.Label>
         <Form.Control onChange={handleChange} type="text" name="brand" value={form.brand || ''} placeholder="Ferrari" />

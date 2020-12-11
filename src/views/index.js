@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { Login, List, Branches, Layout, CarList } from "./main/components";
+import { Login, List, Layout, CarList } from "./main/components";
+import BranchMain from '../components/branches/branchmain'
 import Home from "./main"
 import AdminPage from "./admin";
 import {isAuthenticated} from '../config/auth'
@@ -20,7 +21,7 @@ const Pages = [
   {
     name: 'Branches',
     path: 'branches',
-    component:Branches
+    component:BranchMain
   },
   {
     name: 'CarList',

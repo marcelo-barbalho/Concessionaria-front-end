@@ -15,7 +15,7 @@ export const getCarList = () => {
     }
 }
 export const saveCar = (props, config) => {
-    console.log(props.get("_id"))
+    console.log(props)
     return async () => {
         if (props.get("_id")) {
             await patchCars(props.get("_id"), props, config)

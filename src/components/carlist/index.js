@@ -3,18 +3,23 @@ import CarForm from './carform'
 import { useDispatch, useSelector } from "react-redux";
 import {getCarList, removeCar} from '../../store/carlist/carlist.action'
 import CustomList from "../list"
+import { getBranches } from "../../store/branchlist/branchlist.action";
 
 function CarList () {
 
   const [modalShow, setModalShow] = useState(false);
   const [editCar, setEditCar]  = useState({})
   const dispatch = useDispatch()  
-  const carsState=useSelector((state) => state.carlist.all);
+  const carsState=useSelector((state) => state.carlist.all)
+  const branchState=useSelector((state) => state.branchlist.all)
   
-
+  
   useEffect(() => {
      dispatch(getCarList())
-  }, [dispatch, modalShow])
+     if(branchState.length === 0){
+      dispatch(getBranches())
+     }
+  }, [dispatch,branchState, modalShow])
    
  
   return (
