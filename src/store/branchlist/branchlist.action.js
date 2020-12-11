@@ -26,6 +26,7 @@ export const branchSave = (props) => {
     }
 }
 export const branchRemove = async (props) => {
+            
             await deleteBranches(props._id)
 
 }

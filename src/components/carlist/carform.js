@@ -43,8 +43,6 @@ else{
       }
     }
     
-
-
       dispatch(saveCar(data, config))
       setModalShow(false)
   }
@@ -56,10 +54,6 @@ else{
         <h3>Cadastro de Carros</h3>
       
       <Form>
-      <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Novo</Form.Label>
-        <Form.Control onChange={handleChange} type="text" name='carstatus' value={form.carstatus || ''}/>
-      </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput2">
         <Form.Label>Marca</Form.Label>
         <Form.Control onChange={handleChange} type="text" name="brand" value={form.brand || ''} placeholder="Ferrari" />
@@ -71,6 +65,10 @@ else{
       <Form.Group controlId="exampleForm.ControlInput4">
         <Form.Label>Ano</Form.Label>
         <Form.Control onChange={handleChange} type="number" name="year" value={form.year || ''} placeholder="Ex:2002" />
+      </Form.Group>
+      <Form.Group controlId="exampleForm.ControlInput1">
+        <Form.Label>Novo</Form.Label>
+        <Form.Control onChange={handleChange} type="text" name='carstatus' value={form.carstatus || ''}/>
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput5">
         <Form.Label>Combustível</Form.Label>
