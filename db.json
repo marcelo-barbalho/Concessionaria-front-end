@@ -1,0 +1,53 @@
+{
+  "cars": [
+    {
+      "id": 0,
+      "brand":"ford",
+      "carmodel":"new fiesta",
+      "year":2020,
+      "chassis":12345679,
+      "carstatus":false,
+      "carplate":12345,
+      "color":"branco",
+      "fueltype":"flex",
+      "location":"asdas" 
+    },
+    {
+      "id": 1,
+      "brand":"volks",
+      "carmodel":"gol",
+      "year":2009,
+      "chassis":12345679,
+      "carstatus":false,
+      "carplate":12345,
+      "color":"azul",
+      "fueltype":"alcool",
+      "location":"sadasds" 
+    },
+    {
+      "id":2,
+      "brand":"chevrolet",
+      "carmodel":"astra",
+      "year":2005,
+      "chassis":12345679,
+      "carstatus":false,
+      "carplate":12345,
+      "color":"verde",
+      "fueltype":"gasolina",
+      "location":"asdasd" 
+    },
+    {
+      "id": 3,
+      "brand":"fiat",
+      "carmodel":"uno",
+      "year":2005,
+      "chassis":12345679,
+      "carstatus":false,
+      "carplate":12345,
+      "color":"laranja",
+      "fueltype":"gasolina",
+      "location":"seila" 
+    }
+  ]
+  
+}
