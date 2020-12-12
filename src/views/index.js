@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { Login, List, Layout, CarList } from "./main/components";
+import { Login,  Layout } from "./main/components";
+import MainCarList from "../components/carlist/maincarlist"
 import BranchMain from '../components/branches/branchmain'
 import Home from "./main"
 import AdminPage from "./admin";
@@ -14,11 +15,6 @@ const Pages = [
     component:Login
   },
   {
-    name: 'List',
-    path: 'list',
-    component:List
-  },
-  {
     name: 'Branches',
     path: 'branches',
     component:BranchMain
@@ -26,7 +22,7 @@ const Pages = [
   {
     name: 'CarList',
     path: 'carList',
-    component:CarList
+    component:MainCarList
   },
   {
     name: 'Home',
