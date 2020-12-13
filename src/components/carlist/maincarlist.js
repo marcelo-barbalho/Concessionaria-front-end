@@ -31,9 +31,8 @@ const MainCarList = () => {
           const {photo,carmodel,color,brand,year}=car;      
         return<Card key={i}>
           <CardImg background={photo}>
-            {/* <img src={photo} alt={""}/> */}
           </CardImg>
-  {console.log(car)}
+
           <CardBody>
             <CardTitle>{carmodel} - {year}</CardTitle>
             <span>{brand} {color} </span>

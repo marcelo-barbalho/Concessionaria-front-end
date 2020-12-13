@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Carousel } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
 import { getCarList } from '../../../store/carlist/carlist.action'
+import bg from '../../../assets/images/funddo-carros.jpg'
 
 
 
@@ -35,8 +36,8 @@ const scroll=(direction)=>{
 
 
   return (
- <BannerContainer>
-       <Carousel indicators={false} controls={false} activeIndex={index} onSelect={handleSelect}>
+ <BannerContainer backgroundimage={bg}>
+       <Carousel indicators={false} controls={false}  activeIndex={index} onSelect={handleSelect}>
          {carsState.map((car,index)=>
       <CarouselItem key={index} backgroundimage={car.photo}>
      
@@ -108,6 +109,10 @@ const BannerContainer = styled.div`
 width:100%;
 background-color:#201E27;
 padding-bottom:2em;
+background-image:url(${props => props.backgroundimage});
+background-size: cover;
+
+    background-position: bottom;
 `
 const CarouselText=styled(Carousel.Caption)`
 width:30%;
@@ -121,7 +126,8 @@ padding:0.5em;
 `;
 const CarouselItem = styled(Carousel.Item) `
 background-image:url(${props => props.backgroundimage});
-background-size:cover;
+background-size:70%;
+background-repeat:no-repeat;
 height:400px;
 width:100%;
 padding:5vh;
