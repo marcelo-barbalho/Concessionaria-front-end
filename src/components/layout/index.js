@@ -22,9 +22,13 @@ export default ({ children }) => {
 };
 
 const ContainerLayout = styled.div`
-min-height:80vh;
+min-height:calc(100vh - 90px);
   /* max-width:2200px; */
-
+h2{
+ 
+  padding:0.5em;
+ 
+}
 `;
 const Background = styled.div`
 background:url(${image5}) no-repeat center;

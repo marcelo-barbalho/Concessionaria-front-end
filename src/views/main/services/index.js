@@ -39,13 +39,18 @@ const Services=styled.div`
 const ServicesWrapper=styled.div`
   display:flex;
   justify-content:space-between;
-  padding:1em 0;
+ 
+  flex-wrap:wrap;
   >div{
     width:20%;
     background-color:rgba(0,0,0,0.5);
     padding:1em;
     color:#fff;
     text-align:center;
+    margin:1em 0;
+    @media (max-width:768px){
+      width:48%;
+    }
   }
   svg{
     color: goldenrod;

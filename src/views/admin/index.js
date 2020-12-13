@@ -3,6 +3,8 @@ import User from '../../components/adminpage/userlist'
 import styled from 'styled-components'
 import CarList from '../../components/carlist'
 import BranchList from '../../components/branches/'
+import { Container } from 'react-bootstrap'
+
 
 const AdminPage = () => {
 
@@ -37,10 +39,9 @@ const AdminPage = () => {
 }
 
 export default AdminPage
-const ButtonsWrapper=styled.div`
-  width:90%;
-  margin:2em auto;
-  margin-bottom:0;
+const ButtonsWrapper=styled(Container)`
+ 
+  margin-top:2em;
   display:flex;
   justify-content:space-between;
 `;

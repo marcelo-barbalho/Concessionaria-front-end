@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Table} from 'react-bootstrap'
+import {Container, Table} from 'react-bootstrap'
 import {FiEdit,FiTrash2} from 'react-icons/fi'
 import {isAuthenticated} from '../../config/auth'
 
@@ -8,7 +8,7 @@ export default (props) => {
   const {columnsNames,columns,list,editAction,deleteAction,addAction}=props
 
   return (
-    <>
+    <Container>
       <CustomList>
       <Table striped bordered hover variant="dark">
           <thead>
@@ -32,14 +32,13 @@ export default (props) => {
          
           {isAuthenticated()? <button onClick={addAction}>Adicionar</button> : ""}
       </CustomList>
-    </>
+    </Container>
   );
 };
 
 
 const CustomList = styled.div`
-width:90%;
-margin:auto;
+
 overflow:overlay;
 padding-bottom:2em;
 

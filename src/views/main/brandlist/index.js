@@ -47,16 +47,20 @@ export default () => {
     background-repeat:no-repeat;
     transition:ease-in;
     cursor:pointer;
+  
     
     &:hover{
       transform:scale(1.1);
       
     }
-  
+  @media (max-width:768px){
+    width:48%;
+    margin:1em 0;
+  }
   `;
 const BrandWrapper =styled.div`
   display:flex;
   justify-content:space-between;
-  padding:1em 0;
-  
+
+  flex-wrap:wrap;
 `;

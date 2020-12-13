@@ -2,51 +2,95 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBranches } from '../../store/branchlist/branchlist.action'
 import { getCarList } from '../../store/carlist/carlist.action'
-import {Card} from 'react-bootstrap'
+import {Container} from 'react-bootstrap'
 import styled from 'styled-components'
+import bg from "../../assets/images/carros-title.jpg"
+import PageTitle from "../layout/pageTitle"
 
 const MainCarList = () => {
 
     const dispatch = useDispatch()  
-    const carsState=useSelector((state) => state.carlist.all)
-    const branchState=useSelector((state) => state.branchlist.all)
-  
-  
+   
   useEffect(() => {
      dispatch(getCarList())
      dispatch(getBranches())
      
   }, [dispatch])
-
+  const carsState=useSelector((state) => state.carlist?.all)
+  const branchState=useSelector((state) => state.branchlist?.all)
   
   const branchName = (car) => branchState.filter(branch => car.location === branch._id).map((item)=>item.fakename)
 
   return (
     <>
-        {carsState.map((car, i)=>       
-        <CardContainer key={i}>
-        <Card.Img variant="top" src={car.photo} />
-        <Card.Body>
-          <Card.Title>{car.carmodel}</Card.Title>
-            <Card.Text>{car.carmodel}              
-            </Card.Text>
-            <Card.Text >{branchName(car)}              
-            </Card.Text>
-          </Card.Body>
-          <button onClick={()=> console.log(branchName(car)
-            )} >teste</button>
-        </CardContainer>               
+    <PageTitle background={bg} title="Nossos carros"/>
+    <Container>
+     
+    <CardWrapper>
+        {carsState.map((car, i)=>{ 
+          const {photo,carmodel,color,brand,year}=car;      
+        return<Card key={i}>
+          <CardImg background={photo}>
+            {/* <img src={photo} alt={""}/> */}
+          </CardImg>
+  {console.log(car)}
+          <CardBody>
+            <CardTitle>{carmodel} - {year}</CardTitle>
+            <span>{brand} {color} </span>
+           <span> disponivel na {branchName(car)}</span>
+          </CardBody>
+        </Card>  }             
         )}
+    </CardWrapper>
+    </Container>
     </>
   )
 }
 
 export default MainCarList
 
-const CardContainer = styled(Card)`
-    display:flex;
-    flex-direction:row;
-    width:35%;
-    height:200px;
+const CardBody=styled.div`
+color:#fff;
+padding:0.5em;
+display:flex;
+align-items:center;
+flex-direction:column;
+justify-content:center;
+width:55%;
+text-align:center;
+`;
+const CardTitle=styled.strong`
+font-size:1.2em;
+  color:goldenrod;
+  `;
+const CardImg=styled.div`
+width:45%;
+clip-path: polygon(0% 0%,100% 0%,75% 100%,0% 100%);
+min-width:170px;
+background-image:url(${props => props.background});
+background-size:cover;
+background-position: center;
+background-color:rgba(0,0,0,.9);
 
-`
+`;
+const Card = styled.div`
+    display:flex;
+    width:48%;
+    height:150px;
+    background-color:rgba(0,0,0,0.7);
+    justify-content:space-between;
+   margin:1em 0;
+   @media (max-width:768px){
+    width:100%;
+  }
+    :hover{
+      transform:scale(1.1);
+    }
+
+`;
+const CardWrapper=styled.div`
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+
+`;

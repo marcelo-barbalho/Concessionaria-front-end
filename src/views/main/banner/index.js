@@ -1,15 +1,25 @@
 
-import React, { useState } from "react";
-import styled from "styled-components"
-import image1 from '../../../assets/images/lamborghini-veneno-1.jpg'
-import image2 from '../../../assets/images/2021-jaguar-f-pace.jpg'
-import image3 from '../../../assets/images/lamborguin.webp'
-import image4 from '../../../assets/images/rs-experience-126.jpg'
+import React, { useState,useEffect } from "react";
+import styled from "styled-components";
 import { Carousel } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux'
+import { getCarList } from '../../../store/carlist/carlist.action'
+
 
 
 export default () => {
+
+  const dispatch = useDispatch()  
+   
+  useEffect(() => {
+     dispatch(getCarList())
+    
+     
+  }, [dispatch])
+  const carsState=useSelector((state) => state.carlist?.all)
+
   const [index, setIndex] = useState(0);
+
 const scroll=(direction)=>{
   var element=document.getElementById("carouselThumbnails");
 
@@ -22,62 +32,17 @@ const scroll=(direction)=>{
 }
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);}
-  const cars = [
-    { 
-      'name':'Lamborghini Veneno',
-      'photo':`${image1}`,
-      'thumb':`${image1}`,
-      'description':'blablabla',
-      'complete-description':'akhsgigqsiygdiqwdq'
-    },
-    { 
-    'name':'Jaguar F-pace',
-    'photo':`${image2}`,
-    'thumb':`${image2}`,
-    'description':'blablabla',
-    'complete-description':'akhsgigqsiygdiqwdq'
-    },
-    { 
-    'name':'Lamborghini Huracan',
-    'photo':`${image3}`,
-    'thumb':`${image3}`,
-    'description':'blablabla',
-    'complete-description':'akhsgigqsiygdiqwdq'
-    },
-    { 
-    'name':'Audi R8',
-    'photo':`${image4}`,
-    'thumb':`${image4}`,
-    'description':'blablabla',
-    'complete-description':'akhsgigqsiygdiqwdq'
-    
-    },
-    { 
-    'name':'Jaguar F-pace',
-    'photo':`${image2}`,
-    'thumb':`${image2}`,
-    'description':'blablabla',
-    'complete-description':'akhsgigqsiygdiqwdq'
-    },
-    { 
-    'name':'Lamborghini Huracan',
-    'photo':`${image3}`,
-    'thumb':`${image3}`,
-    'description':'blablabla',
-    'complete-description':'akhsgigqsiygdiqwdq'
-    }
 
-  ]
 
   return (
  <BannerContainer>
        <Carousel indicators={false} controls={false} activeIndex={index} onSelect={handleSelect}>
-         {cars.map((car,index)=>
+         {carsState.map((car,index)=>
       <CarouselItem key={index} backgroundimage={car.photo}>
      
         <CarouselText>
-          <h3>{car.name}</h3>
-          <p>{car.description}</p>
+          <h3>{car.carmodel}</h3>
+          <span>{car.brand} {car.year}</span>
         </CarouselText>
       </CarouselItem>)}
     
@@ -87,9 +52,7 @@ const scroll=(direction)=>{
    
     <CarouselThumbnails id="carouselThumbnails">
 
-      {cars.map((car,index)=><CarouselThumbnail key={index} backgroundimage={car.thumb} onClick={()=>setIndex(index)}>
-      <span>{car.name}</span>
-
+      {carsState.map((car,index)=><CarouselThumbnail key={index} backgroundimage={car.photo} onClick={()=>setIndex(index)}>
 
       </CarouselThumbnail>
       )}
@@ -123,18 +86,22 @@ z-index:9;
 const CarouselThumbnails=styled.div`
   display:flex;
 width:110%;
-  height:100px;
+  height:80px;
   overflow:hidden;
   scroll-behavior: smooth;
  
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+
 `;
 const CarouselThumbnail=styled.div`
-  min-width:20%;
-  
-  height:100px;
+  width:20%;
+  min-width:100px;
+  height:80px;
+  margin:0 5px;
   background-image:url(${props => props.backgroundimage});
 background-size:cover;
+background-color:rgba(0,0,0,0.7);
+background-position:center;
+box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 `;
 
 const BannerContainer = styled.div`
@@ -144,9 +111,13 @@ padding-bottom:2em;
 `
 const CarouselText=styled(Carousel.Caption)`
 width:30%;
-background:rgba(52,58,64, 0.7);
-bottom:40%;
+background:rgba(0,0,0, 0.7);
+bottom:50%;
 left:10%;
+padding:0.5em;
+@media(max-width:768px){
+  width:40%;
+}
 `;
 const CarouselItem = styled(Carousel.Item) `
 background-image:url(${props => props.backgroundimage});
@@ -154,4 +125,5 @@ background-size:cover;
 height:400px;
 width:100%;
 padding:5vh;
-`
+background-position:center;
+`;

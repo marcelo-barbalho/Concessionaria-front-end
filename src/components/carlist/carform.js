@@ -67,7 +67,7 @@ else{
         <Form.Control onChange={handleChange} type="number" name="year" value={form.year || ''} placeholder="Ex:2002" />
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Label>Novo</Form.Label>
+        <Form.Label>Condição</Form.Label>
         <Form.Control onChange={handleChange} type="text" name='carstatus' value={form.carstatus || ''}/>
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput5">
@@ -88,7 +88,7 @@ else{
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput9">
         <Form.Label>Localidade</Form.Label>
-        <Form.Control onChange={handleChange} as="select" value={form.location} size="sm" name="location" custom>{branch.map((local, i) => <option defaultValue='0'  key ={i} value={local._id}>{local.fakename}</option>
+        <Form.Control onChange={handleChange} as="select" value={form.location} size="sm" name="location" custom><option></option>{branch.map((local, i) => <option defaultValue='0'  key ={i} value={local._id}>{local.fakename}</option>
     )}</Form.Control>
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput10">        

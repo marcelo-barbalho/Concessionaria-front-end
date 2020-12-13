@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Navbar, Nav, Dropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {isAuthenticated, removeToken } from "../../config/auth";
+import logo from "../../assets/images/logo.png"
 
 
 export default () => {
@@ -43,10 +44,11 @@ export default () => {
     
       <Header>
         <Navbar>
+        <Logo href="/"><img src={logo} alt=""/></Logo>
           <Container>
-            <Navbar.Brand href="#home">Logomarca</Navbar.Brand>
-              <Navbar.Brand href="#home">Aurum Motors</Navbar.Brand>
-              <Navbar.Brand href="#home">Art & Luxury</Navbar.Brand>
+          
+    
+           
               <MenuMobile className="justify-content-end">
       
               <MenuDesk>
@@ -83,6 +85,22 @@ export default () => {
 const Header = styled.header`
   width: 100%;
   background-color:#201E27;
+  nav{
+    padding:0;
+    >div div{
+      padding: 0 1rem;
+    }
+  }
+
+`;
+const Logo=styled(Navbar.Brand)`
+clip-path: polygon(0% 0%,100% 0%,75% 100%,0% 100%);
+background-color:#fff;
+padding: .5rem 1rem;
+padding-right:30px;
+img{
+    width:100px;
+  }
 `;
 const MenuMobile=styled(Navbar.Collapse)`
 .dropdown{

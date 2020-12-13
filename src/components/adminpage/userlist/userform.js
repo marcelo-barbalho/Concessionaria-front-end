@@ -63,12 +63,12 @@ const submitForm = async () => {
     </Form.Group>
     <Form.Group controlId="exampleForm.ControlInput5">
       <Form.Label>Filial</Form.Label>
-      <Form.Control onChange={handleChange} as="select" value={form.company} size="sm" name="company" custom>{branch.map((local, i) => <option defaultValue='0'  key ={i} value={local._id}>{local.fakename}</option>
+      <Form.Control onChange={handleChange} as="select" value={form.company} size="sm" name="company" custom><option></option>{branch.map((local, i) => <option defaultValue='0'  key ={i} value={local._id}>{local.fakename}</option>
     )}</Form.Control>
     </Form.Group>
     <Form.Group controlId="exampleForm.ControlInput6">
       <Form.Label>Data de Nascimento</Form.Label>
-      <Form.Control onChange={handleChange} type="text" name="birthdate" value={form.birthdate || ''} placeholder="ex: 15/11/1998" />
+      <Form.Control onChange={handleChange} type="date" name="birthdate" value={form.birthdate || ''} placeholder="ex: 15/11/1998" />
     </Form.Group>
     <Form.Group controlId="formBasicCheckbox1">
       <Form.Check onClick={handleChange} onChange={handleChange} type="checkbox" checked={form.is_active? true : false} name="is_active" value={form.is_active || ''} label="Funcionário Ativo" />

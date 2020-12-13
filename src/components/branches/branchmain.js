@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBranches } from '../../store/branchlist/branchlist.action'
 import {getCarList} from '../../store/carlist/carlist.action'
 import styled from 'styled-components'
+import PageTitle from "../layout/pageTitle"
+import bg from '../../assets/images/filiais-title.jpg'
 
 const BranchMain = () => {
     const [form, setForm]= useState({})
@@ -50,17 +52,22 @@ const BranchMain = () => {
 
   return (
     <>
+      <PageTitle background={bg} title="Lista de carros por filial"/>
+       
     <Container>
+   <Search>
       <Form>
         <Form.Group controlId="exampleForm.ControlInput9">
             <Form.Label>Filial</Form.Label>  
-            <Form.Control as="select"  onChange={handleChange} value={branches._id} size="sm" name="location" custom>{branches.map((local, i) => <option key ={i} value={local._id} >{local.fakename}</option>
+            <Form.Control as="select"  onChange={handleChange} value={branches._id} size="sm" name="location" custom>
+              <option></option>
+              {branches.map((local, i) => <option key ={i} value={local._id} >{local.fakename}</option>
         )}</Form.Control>
         </Form.Group>
       </Form>
-        <div>Endereço:{selectedBranch?.adress}</div>
+        <div>Endereço:<p>{selectedBranch?selectedBranch.adress:"selecione a filial para ver o endereço"}</p></div>
       <Button onClick={()=>setShowList(true)}>Buscar</Button>
-     
+      </Search>
       {showlist && 
         <CustomList>
         <Table striped bordered hover variant="dark">
@@ -85,10 +92,38 @@ const BranchMain = () => {
 }
 
 export default BranchMain
+const Search=styled.div`
+display:flex;
+width:100%;
+background-color: rgba(0,0,0,.5);
+justify-content:space-between;
+align-items:center;
+color:#fff;
+padding-right:1em;
+margin:1em 0;
+>div{
+  width:50%;
+
+ 
+  padding: 0.5em 1em;
+  height:95px;
+}
+form{
+  background-color:#201E27;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  padding: 0.5em 1em;
+  width:40%;
+  >div{
+    width:90%;
+  }
+}
+button{
+  padding:0 1em;
+}
+`;
 
 const CustomList = styled.div`
-width:90%;
-margin:auto;
+
 overflow:overlay;
 padding-bottom:2em;
 

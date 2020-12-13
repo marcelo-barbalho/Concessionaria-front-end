@@ -24,7 +24,7 @@ function CarList () {
     <>
      {modalShow && <CarForm user={editCar} setModalShow={setModalShow}/>}
 
-      <CustomList columnsNames={["Novo","Marca","Modelo","Ano","Combustível","Cor"]} 
+      <CustomList columnsNames={["Condição","Marca","Modelo","Ano","Combustível","Cor"]} 
       columns={["carstatus","brand","carmodel","year","fueltype","color"]}
       list={carsState}
       editAction={(car)=>{setModalShow(true);setEditCar(car)}}
