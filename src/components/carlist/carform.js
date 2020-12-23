@@ -43,7 +43,7 @@ else{
       }
     }
     
-      dispatch(saveCar(data, config))
+      await dispatch(saveCar(data, config))
       setModalShow(false)
   }
   

@@ -18,7 +18,7 @@ const handleChange = (attr) => {
   return
 }
 const submitForm = async () => {
-    dispatch(branchSave(form))
+    await dispatch(branchSave(form))
     setForm({})
     setModalShow(false)
   
