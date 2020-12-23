@@ -12,8 +12,8 @@ function CarList () {
   const [modalShow, setModalShow] = useState(false);
   const [editCar, setEditCar]  = useState({})
   const dispatch = useDispatch()
-  const [refresh, setRefresh] = useState(false);  
   const carsState=useSelector((state) => state.carlist.all)
+  const [refresh, setRefresh] = useState(false);  
   const [show, setShow] = useState(false);
   
   
