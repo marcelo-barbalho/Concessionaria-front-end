@@ -1,68 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Projeto concessionaria - Aurum Motors
 
-## Available Scripts
+<p align="center">O projeto consiste na construção de um sistema (aplicação web) cujo o objetivo é receber carros e
+concessionárias cadastrados e exibir em uma vitrine.</p>
+<p align="center">Projeto desenvolvido durante bootcamp infnet 2020</p>
+<h4 align="center"> 
+	🚧 🚀 Em construção...  🚧
+</h4>
 
-In the project directory, you can run:
+<p align="center">
+ <a href="#roadmap">Roadmap</a> •
+ <a href="#features">Features</a> •
+ <a href="#run">Como rodar o projeto</a> • 
+ <a href="#tech">Tecnologias</a> • 
+ <a href="#licence">Licença</a> • 
+ <a href="https://github.com/marcelo-barbalho">Autor</a>
+</p>
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h3 id='features'>⚙️Features</h3>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [x] Gerenciamento de usuário
+- [x] Gerenciamento de categorias
+- [x] Gerenciamento de produtos
 
-### `npm test`
+<h3 id='run'>🚀Como rodar o Projeto</h3>
+Este projeto é divido em duas partes:
+1. Backend (outro repositorio) 
+2. Frontend (este repositorio)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+💡O Frontend precisa que o Backend esteja sendo executado para funcionar.
+<h4>Pré-requisitos</h4>
 
-### `npm run build`
+[Git](https://git-scm.com)
+[Node.js](https://nodejs.org/en/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 🎲 Rodando o Backend (servidor)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Clone este repositório
+$ git clone {backend-url}
 
-### `npm run eject`
+# Acesse a pasta do projeto no terminal/cmd
+$ cd Concessionaria-back-end
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Vá para a pasta server
+$ cd server
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Instale as dependências
+$ npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev:server
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# O servidor inciará na porta:3333 - acesse http://localhost:3333 
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 🧭 Rodando a aplicação web (Frontend)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
 
-### Code Splitting
+# Clone este repositório
+$ git clone git@github.com/marcelo-barbalho/Concessionaria-front-end.git
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd Concessionaria-front-end
 
-### Analyzing the Bundle Size
+# Instale as dependências
+$ npm install
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Execute a aplicação em modo de desenvolvimento
+$ npm run start
 
-### Making a Progressive Web App
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+---
 
-### Advanced Configuration
+<h3 id='tech'>🛠 Tecnologias</h3>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### Deployment
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React-boostrap]()
+- [Styled Components]()
+- [Redux]()
+---
+<h3 id='licence'>📝 Licença</h3>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Este projeto esta sobe a licença [MIT](./LICENSE).
 
-### `npm run build` fails to minify
+Feito por Marcelo Barbalho 👋🏽 [Entre em contato!](https://www.linkedin.com/in/marcelo-barbalho-cruz/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+---
