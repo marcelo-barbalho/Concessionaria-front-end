@@ -25,13 +25,15 @@ concessionárias cadastrados e exibir em uma vitrine.</p>
 
 <h3 id='run'>🚀Como rodar o Projeto</h3>
 Este projeto é divido em duas partes:
-1. Backend (outro repositorio) 
-2. Frontend (este repositorio)
+<ol>
+	<li>Backend (outro repositorio) </li>
+	<li>Frontend (este repositorio) </li>
+</ol>
 
 💡O Frontend precisa que o Backend esteja sendo executado para funcionar.
 <h4>Pré-requisitos</h4>
 
-[Git](https://git-scm.com)
+[Git](https://git-scm.com)  
 [Node.js](https://nodejs.org/en/)
 
 #### 🎲 Rodando o Backend (servidor)
