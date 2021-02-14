@@ -9,7 +9,6 @@ concessionárias cadastrados e exibir em uma vitrine.</p>
 </h4>
 
 <p align="center">
- <a href="#roadmap">Roadmap</a> •
  <a href="#features">Features</a> •
  <a href="#run">Como rodar o projeto</a> • 
  <a href="#tech">Tecnologias</a> • 
