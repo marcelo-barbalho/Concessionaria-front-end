@@ -22,6 +22,7 @@ concessionárias cadastrados e exibir em uma vitrine.</p>
 - [x] Gerenciamento de usuário
 - [x] Gerenciamento de concessionarias
 - [x] Gerenciamento de carros
+- [x] Vitrine de  carros
 - [ ] Filtro por marca de carro
 
 <h3 id='run'>🚀Como rodar o Projeto</h3>
