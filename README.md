@@ -1,8 +1,9 @@
-# Projeto concessionaria - Aurum Motors
+# Projeto concessionaria (front-end) - Aurum Motors
 
 <p align="center">O projeto consiste na construção de um sistema (aplicação web) cujo o objetivo é receber carros e
 concessionárias cadastrados e exibir em uma vitrine.</p>
 <p align="center">Projeto desenvolvido durante bootcamp infnet 2020</p>
+<h4 align="center"> <a href='https://concessionaria.vercel.app/' align="center">Veja o projeto online</a></h4>
 <h4 align="center"> 
 	🚧 🚀 Em construção...  🚧
 </h4>
@@ -16,48 +17,21 @@ concessionárias cadastrados e exibir em uma vitrine.</p>
  <a href="https://github.com/marcelo-barbalho">Autor</a>
 </p>
 
-
 <h3 id='features'>⚙️Features</h3>
 
 - [x] Gerenciamento de usuário
-- [x] Gerenciamento de categorias
-- [x] Gerenciamento de produtos
+- [x] Gerenciamento de concessionarias
+- [x] Gerenciamento de carros
+- [ ] Filtro por marca de carro
 
 <h3 id='run'>🚀Como rodar o Projeto</h3>
-Este projeto é divido em duas partes:
-<ol>
-	<li>Backend (outro repositorio) </li>
-	<li>Frontend (este repositorio) </li>
-</ol>
+Este projeto é consiste apenas no frontend da aplicação:
 
-💡O Frontend precisa que o Backend esteja sendo executado para funcionar.
 <h4>Pré-requisitos</h4>
 
 [Git](https://git-scm.com)  
 [Node.js](https://nodejs.org/en/)
 
-#### 🎲 Rodando o Backend (servidor)
-
-```bash
-
-# Clone este repositório
-$ git clone {backend-url}
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd Concessionaria-back-end
-
-# Vá para a pasta server
-$ cd server
-
-# Instale as dependências
-$ npm install
-
-# Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
-
-# O servidor inciará na porta:3333 - acesse http://localhost:3333 
-
-```
 
 #### 🧭 Rodando a aplicação web (Frontend)
 
@@ -86,9 +60,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
-- [React-boostrap]()
-- [Styled Components]()
-- [Redux]()
+- [React-boostrap](https://react-bootstrap.github.io/)
+- [Styled Components](https://styled-components.com/)
+- [Redux](https://redux.js.org/)
 ---
 <h3 id='licence'>📝 Licença</h3>
 
